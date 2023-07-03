@@ -38,7 +38,7 @@ def send_teams_message(webhook_urls: list[dict], message: str) -> None:
 if __name__ == "__main__":
     arguments = sys.argv[1]
     if arguments == "push":
-        send_teams_message(webhook_dict, hook_messages.MESSAGE_PUSH)
+        send_teams_message(webhook_dict, "Es wurde etwas in den master gepusht")
     elif arguments == "release":
         send_teams_message(webhook_dict, hook_messages.MESSAGE_RELEASE)
     else:

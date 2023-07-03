@@ -3,35 +3,16 @@ import socket
 
 HOSTNAME = socket.gethostname()
 
-MESSAGE_PUSH = f"""
-Hallo zusammen,
+def get_message(text_01: str, text_02: str) -> None:
+    """Return Text."""
+    return f"""
+    Hallo zusammen,
 
-Es wurde etwas neues in den "master" gepusht.
+    der Tag {text_01} wurde released.
 
-Gesendet vom Rechner: "{HOSTNAME}"
+    Hier sind alle Änderungen:
+    {text_02}
 
-Liebe Grüße,
-Kevin
-"""
+    Diese Nachricht wurde automatisch vom Rechner {HOSTNAME} versendet.
 
-MESSAGE_RELEASE = f"""
-Hallo zusammen,
-
-ein neues Release wurde erstellt.
-
-Gesendet vom Rechner: "{HOSTNAME}"
-
-Liebe Grüße,
-Kevin
-"""
-
-MESSAGE_TEST = f"""
-Hallo zusammen,
-
-das ist eine automatisch generierte Nachricht von einem Python-Skript.
-
-Gesendet vom Rechner: "{HOSTNAME}"
-
-Liebe Grüße,
-Kevin
-"""
+    """
