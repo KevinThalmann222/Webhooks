@@ -40,6 +40,6 @@ if __name__ == "__main__":
     if arguments == "push":
         send_teams_message(webhook_dict, "Es wurde etwas in den master gepusht")
     elif arguments == "release":
-        send_teams_message(webhook_dict, hook_messages.MESSAGE_RELEASE)
+        send_teams_message(webhook_dict, hook_messages.get_message(sys.argv[2], sys.argv[3]))
     else:
-        send_teams_message(webhook_dict, hook_messages.MESSAGE_TEST)
+        send_teams_message(webhook_dict, "Das ist ein Test")
