@@ -8,11 +8,11 @@ def get_message(title: str, description: str) -> None:
     return f"""
     Hallo zusammen,
 
-    es wurde ein neuer Tag Relead.\n
+    es wurde ein neuer Tag Relead.
 
-    {title} \n
+    {title}
 
-    {description} \n
+    {description}
 
     Diese Nachricht wurde automatisch vom Rechner {HOSTNAME} versendet.
 
