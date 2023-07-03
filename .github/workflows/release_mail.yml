@@ -33,4 +33,4 @@ jobs:
           # Ein Geheimnis (secret) namens USER_PASSWORD wird als Umgebungsvariable festgelegt
           # USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
         # Das Python-Skript "send_email.py" wird ausgeführt
-        run: python teams_webhook.py release
+        run: python teams_webhook.py release ${{ github.event.release.name }}" ${{ github.event.release.body }}"
