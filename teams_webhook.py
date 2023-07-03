@@ -1,20 +1,10 @@
 """Autor: Kevin Thalmann."""
 import json
-import socket
+import sys
 
 import requests
 
-HOSTNAME = socket.gethostname()
-MESSAGE = f"""
-Hallo zusammen,
-
-das ist eine automatisch generierte Nachricht von einem Python-Skript.
-
-Gesendet vom Rechner: "{HOSTNAME}"
-
-Liebe Grüße,
-Kevin
-"""
+import hook_messages
 
 webhook_dict = [
     {
@@ -46,5 +36,10 @@ def send_teams_message(webhook_urls: list[dict], message: str) -> None:
 
 
 if __name__ == "__main__":
-    send_teams_message(webhook_dict, MESSAGE)
-
+    arguments = sys.argv[1]
+    if arguments == "push":
+        send_teams_message(webhook_dict, hook_messages.MESSAGE_PUSH)
+    elif arguments == "release":
+        send_teams_message(webhook_dict, hook_messages.MESSAGE_RELEASE)
+    else:
+        send_teams_message(webhook_dict, hook_messages.MESSAGE_TEST)

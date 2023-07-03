@@ -1,11 +1,11 @@
 # Name des Workflows
-name: TeamsMessage-release
+name: TeamsMessage-push
 
 on:
-  # Der Workflow wird ausgelöst, wenn ein Release veröffentlicht wird.
-  release:
-    types:
-      - published
+  # Der Workflow wird ausgelöst, wenn etwas in "master" gepusht wird.
+  push:
+      branches:
+        - master
   # Der Workflow kann manuell über den Workflow-Dispatch-Trigger ausgelöst werden
   workflow_dispatch:
 
@@ -33,4 +33,4 @@ jobs:
           # Ein Geheimnis (secret) namens USER_PASSWORD wird als Umgebungsvariable festgelegt
           # USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
         # Das Python-Skript "send_email.py" wird ausgeführt
-        run: python teams_webhook.py release
+        run: python teams_webhook.py push
