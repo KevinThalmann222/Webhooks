@@ -3,15 +3,16 @@ import socket
 
 HOSTNAME = socket.gethostname()
 
-def get_message(text_01: str, text_02: str) -> None:
+def get_message(title: str, description: str) -> None:
     """Return Text."""
     return f"""
     Hallo zusammen,
 
-    der Tag {text_01} wurde released.
+    es wurde ein neuer Tag Relead.\n
 
-    Hier sind alle Änderungen:
-    {text_02}
+    {title} \n
+
+    {description} \n
 
     Diese Nachricht wurde automatisch vom Rechner {HOSTNAME} versendet.
 
