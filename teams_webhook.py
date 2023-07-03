@@ -1,16 +1,17 @@
 """Autor: Kevin Thalmann."""
 import json
+import socket
 
 import requests
 
+HOSTNAME = socket.gethostname()
 WEBHOOK_URL = "https://iavgroup.webhook.office.com/webhookb2/fb3738e5-b395-4630-bbea-05b0622afad7@cd726fc8-636c-4794-8425-41f9d8b0d7d5/IncomingWebhook/cc372bf27c144afb8acd8b902e4142d9/d83833fd-7393-48ce-9b10-748ed5368b05"
-MESSAGE = """
+MESSAGE = f"""
 Hallo zusammen,
 das ist eine automatisch generierte Nachricht von einem Python-Skript.
-
-Liebe Grüße,
-Kevin
+Gesendet vom Rechner: "{HOSTNAME}"
 """
+
 
 def send_teams_message(webhook_url: str, message: str) -> None:
     """Send the message to Teams.
