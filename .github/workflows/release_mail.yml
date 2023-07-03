@@ -2,6 +2,9 @@
 name: Teams-Message
 
 on:
+  push:
+      branches:
+        - master
   release:
     types:
     # Der Workflow wird ausgelöst, wenn ein Release veröffentlicht wird
@@ -24,6 +27,9 @@ jobs:
         with:
           # Die gewünschte Python-Version angeben
           python-version: 3.x
+      - name: Install requests module
+        # Installieren von "requests"
+        run: pip install requests
         # Schritt zum Ausführen des E-Mail-Codes
       - name: Sende Teams-Message
         # env:
