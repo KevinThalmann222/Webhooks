@@ -30,7 +30,7 @@ jobs:
         # Schritt zum Ausführen des E-Mail-Codes
       - name: Sende Teams-Message
         # Das Python-Skript "send_email.py" wird ausgeführt
-        run: python teams_webhook.py release ${{ github.event.release.name }} ${{ github.event.release.body }}
+        run: python teams_webhook.py release "${{ github.event.release.name }}" "${{ github.event.release.body }}""
       - name: Echo
         id: release
         run: |
