@@ -1,0 +1,25 @@
+name: Automatisches Löschen gemergerter Branches
+
+on:
+  # Auslöser jede Nacht um 3 Uhr
+  schedule:
+    - cron: "0 3 * * *"
+  # Der Workflow kann manuell über den Workflow-Dispatch-Trigger ausgelöst werden
+  workflow_dispatch:
+
+jobs:
+  delete-merged-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Lösche gemergte Branches
+        run: |
+          git fetch --prune
+          git branch --merged origin/main | grep -v 'main$' | xargs -r git branch -d
+          git remote prune origin
+      - name: Sende Teams-Message
+        # Das Python-Skript "teams_webhook.py" wird ausgeführt
+        run: python teams_webhook.py delete
