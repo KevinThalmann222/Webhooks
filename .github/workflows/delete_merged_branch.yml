@@ -18,22 +18,18 @@ jobs:
       - name: Fetch All Branches
         run: git fetch --all --prune
 
-      - name: Fetch All Branches
-        run: git fetch --all --prune
-
       - name: Get Merged Branches
         id: merged_branches
-        run: echo "::set-output name=branches::$(git branch -r --merged origin/master)"
+        run: |
+          merged_branches=$(git branch --remote --merged | grep -v "origin/HEAD" | grep -v "origin/master" | cut -d '/' -f 2-)
+          echo "::set-output name=branches::${merged_branches}"
 
       - name: Delete Merged Branches
         run: |
           branches=${{ steps.merged_branches.outputs.branches }}
           IFS=$'\n' read -rd '' -a branches_array <<<"$branches"
           for branch in "${branches_array[@]}"; do
-            branch_name=${branch#origin/}
-            if [[ "$branch_name" != "HEAD" && "$branch_name" != "master" ]]; then
-              git push origin --delete "$branch_name"
-            fi
+            git push origin --delete "$branch"
           done
 
       - name: Sende Teams-Message
