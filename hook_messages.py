@@ -10,10 +10,15 @@ def get_message(title: str, description: str) -> None:
 
     es wurde ein neuer Tag Relead.
 
-    {title}
+    Title: {title}
+
+    Beschreibung:
 
     {description}
 
-    Diese Nachricht wurde automatisch vom Rechner {HOSTNAME} versendet.
 
+    -----------------
+    Diese Nachricht wurde automatisch
+
+    vom Rechner '{HOSTNAME}' versendet.
     """
