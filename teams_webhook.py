@@ -45,7 +45,7 @@ if __name__ == "__main__":
         send_teams_message(webhook_dict,
                            hook_messages.get_message(sys.argv[2], sys.argv[3])
                            )
-    if arguments == "delete":
+    elif arguments == "delete":
         send_teams_message(webhook_dict,
                            "Automatisches Löschen gemergerter Branches wurde durchgeführt"
                            )
