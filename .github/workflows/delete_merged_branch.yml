@@ -22,15 +22,23 @@ jobs:
         id: merged_branches
         run: |
           merged_branches=$(git branch --remote --merged | grep -v "origin/HEAD" | grep -v "origin/master" | cut -d '/' -f 2-)
-          echo "::set-output name=branches::${merged_branches}"
+          if [[ -n "$merged_branches" ]]; then
+            echo "::set-output name=branches::${merged_branches}"
+          else
+            echo "::set-output name=branches::"
+          fi
 
       - name: Delete Merged Branches
         run: |
           branches=${{ steps.merged_branches.outputs.branches }}
-          IFS=$'\n' read -rd '' -a branches_array <<<"$branches"
-          for branch in "${branches_array[@]}"; do
-            git push origin --delete "$branch"
-          done
+          if [[ -n "$branches" ]]; then
+            IFS=$'\n' read -rd '' -a branches_array <<<"$branches"
+            for branch in "${branches_array[@]}"; do
+              git push origin --delete "$branch"
+            done
+          else
+            echo "Keine gemergten Branches gefunden."
+          fi
 
       - name: Sende Teams-Message
         # Das Python-Skript "teams_webhook.py" wird ausgeführt
