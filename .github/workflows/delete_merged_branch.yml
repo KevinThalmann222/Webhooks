@@ -8,18 +8,30 @@ on:
   workflow_dispatch:
 
 jobs:
-  delete-merged-branches:
+  delete_merged_branches:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+      
+      - name: Fetch All Branches
+        run: git fetch --all --prune
 
-      - name: Lösche gemergte Branches
+      - name: Get Merged Branches
+        id: merged_branches
+        run: echo "::set-output name=branches::$(git branch -r --merged origin/master | cut -d '/' -f 2-)"
+
+      - name: Delete Merged Branches
         run: |
-          git fetch --prune
-          git branch --merged origin/main | grep -v 'main$' | xargs -r git branch -d
-          git remote prune origin
+          branches=${{ steps.merged_branches.outputs.branches }}
+          IFS=$'\n' read -rd '' -a branches_array <<<"$branches"
+          for branch in "${branches_array[@]}"; do
+            if [[ "$branch" != "HEAD" && "$branch" != "master" ]]; then
+              git push origin --delete "$branch"
+            fi
+          done
+
       - name: Sende Teams-Message
         # Das Python-Skript "teams_webhook.py" wird ausgeführt
         run: python teams_webhook.py delete
