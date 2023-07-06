@@ -1,10 +1,13 @@
 # Sub-Module einbinden
 
 1. Navigiere zum Hauptverzeichnis deines Repositories in der Befehlszeile oder im Terminal.
-2. Navigiere zum Hauptverzeichnis deines Repositories in der Befehlszeile oder im Terminal. `git submodule add **Submodul-URL** **Pfad im Hauptrepository**`
-3. Ersetze Submodul-URL durch die URL des Submoduls, das du einbinden möchtest, und Pfad im Hauptrepository durch den Pfad, unter dem das Submodul in deinem Hauptrepository erscheinen soll.
-4. Führe den Befehl `git submodule init` aus, um das Submodul zu initialisieren.
-5. Führe den Befehl `git submodule update` aus, um das Submodul herunterzuladen und in deinem Hauptrepository zu speichern.
+2. Führe den folgenden Befehl aus, um das Submodul hinzuzufügen:
+3. `git submodule add **Submodul-URL** **Pfad im Hauptrepository**`
+4. Ersetze `Submodul-URL` durch die URL des Submoduls, das du einbinden möchtest, und `Pfad im Hauptrepository` durch den Pfad, unter dem das Submodul in deinem Hauptrepository erscheinen soll.
+5. z.B. `git submodule add https://github.com/KevinThalmann222/WorkSpacePython.git Webhooks\Submodul` oder
+6. `git submodule add https://github.com/KevinThalmann222/WorkSpacePython.git`
+7. Führe den Befehl `git submodule init` aus, um das Submodul zu initialisieren.
+8. Führe den Befehl `git submodule update` aus, um das Submodul herunterzuladen und in deinem Hauptrepository zu speichern.
 
 ## GitHub Actions: TeamsMessage-release
 
