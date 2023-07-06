@@ -1,15 +1,23 @@
-# GitHub Actions: TeamsMessage-release
+# Sub-Module einbinden
+
+1. Navigiere zum Hauptverzeichnis deines Repositories in der Befehlszeile oder im Terminal.
+2. Navigiere zum Hauptverzeichnis deines Repositories in der Befehlszeile oder im Terminal. `git submodule add **Submodul-URL** **Pfad im Hauptrepository**`
+3. Ersetze Submodul-URL durch die URL des Submoduls, das du einbinden möchtest, und Pfad im Hauptrepository durch den Pfad, unter dem das Submodul in deinem Hauptrepository erscheinen soll.
+4. Führe den Befehl `git submodule init` aus, um das Submodul zu initialisieren.
+5. Führe den Befehl `git submodule update` aus, um das Submodul herunterzuladen und in deinem Hauptrepository zu speichern.
+
+## GitHub Actions: TeamsMessage-release
 
 Dieses GitHub Actions-Workflow-Skript ermöglicht das Senden einer Teams-Nachricht, wenn ein Release veröffentlicht wird.
 
-## Auslöser
+## Auslöser1
 
 Der Workflow wird ausgelöst durch:
 
 Veröffentlichung eines Releases (`release: published`)
 Manuelle Ausführung über den Workflow-Dispatch-Trigger (workflow_dispatch)
 
-## Jobs
+## Jobs1
 
 **build**
 Dieser Job wird auf einem Ubuntu-Latest-Betriebssystem ausgeführt.
@@ -21,24 +29,24 @@ Schritte:
 3. **Installieren des Requests-Moduls**: Das Modul `pip install requests` wird installiert.
 4. **Sende Teams-Nachricht**: Das Python-Skript "teams_webhook.py" wird mit den Release-Informationen als Argumente ausgeführt. Dieses Skript sendet eine Teams-Nachricht.
 
-## Anmerkungen
+## Anmerkungen1
 
 - Das Skript verwendet das Modul "requests", daher wird dieses Modul vor der Ausführung installiert.
 - Der Name und der Inhalt des veröffentlichten Releases werden als Argumente an das Python-Skript übergeben.
 - Für die Verwendung von Geheimnissen (secrets) kann das entsprechende env-Block-Kommentar entfernt werden und das erforderliche Geheimnis in der Workflow-Konfiguration hinterlegt werden.
 
-# GitHub Actions: TeamsMessage-push
+## GitHub Actions: TeamsMessage-push
 
 Dieses GitHub Actions-Workflow-Skript ermöglicht das Senden einer Teams-Nachricht, wenn Code in den "master"-Branch gepusht wird.
 
-## Auslöser
+## Auslöser2
 
 Der Workflow wird ausgelöst durch:
 
 - Push in den "master"-Branch (`push: branches: [master]`)
 - Manuelle Ausführung über den Workflow-Dispatch-Trigger (`workflow_dispatch`)
 
-## Jobs
+## Jobs2
 
 **build**
 Dieser Job wird auf einem Ubuntu-Latest-Betriebssystem ausgeführt.
@@ -50,8 +58,7 @@ Schritte:
 3. **Installieren des Requests-Moduls**: Das Modul "requests" wird installiert.
 4. **Sende Teams-Nachricht**: Das Python-Skript "teams_webhook.py" wird mit dem Argument "push" ausgeführt. Dieses Skript sendet eine Teams-Nachricht.
 
-## Anmerkungen
+## Anmerkunge2
 
 - Das Skript verwendet das Modul "requests", daher wird dieses Modul vor der Ausführung installiert.
 - Für die Verwendung von Geheimnissen (secrets) kann der entsprechende env-Block-Kommentar entfernt werden, und das erforderliche Geheimnis kann in der Workflow-Konfiguration hinterlegt werden.
-  
