@@ -7,9 +7,10 @@
 05. z.B. `git submodule add https://github.com/KevinThalmann222/WorkSpacePython.git Webhooks\Submodul` oder
 06. `git submodule add https://github.com/KevinThalmann222/WorkSpacePython.git`
 07. Erstelle die Datei **.gitmodules** und füge folgenede Zeilen hinzu:
-08. a. `[submodule "WorkSpacePython"]`
-   b. `path = WorkSpacePython`
-   c. `url = https://github.com/KevinThalmann222/WorkSpacePython.git`
+08. Inhalt **.gitmodules**
+   - [submodule "WorkSpacePython"]
+   - path = WorkSpacePython
+   - url = `https://github.com/KevinThalmann222/WorkSpacePython.git`
 09. Führe den Befehl `git submodule init` aus, um das Submodul zu initialisieren.
 10. Führe den Befehl `git submodule update` aus, um das Submodul herunterzuladen und in deinem Hauptrepository zu speichern.
 11. Git update submodule `git submodule update --remote <Name_submodule>` bzw. `git submodule update --remote WorkSpacePython`
