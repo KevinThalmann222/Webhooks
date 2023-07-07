@@ -28,11 +28,15 @@ def send_teams_message(webhook_urls: list[dict], message: str) -> None:
         "Content-Type": "application/json"
     }
     for webhook  in webhook_urls:
-        response = requests.post(webhook['URL'], data=json.dumps(payload), headers=headers)
+        response = requests.post(webhook['URL'],
+                                 data=json.dumps(payload), headers=headers)
         if response.status_code == 200:
-            print(f"Message sent '{webhook['TEAM_KANAL']}' successfully!")
+            print(
+                f"Message sent '{webhook['TEAM_KANAL']}' successfully!")
         else:
-            print(f"Failed to send message to {webhook['TEAM_KANAL']}. Error: {response.text}")
+            print(
+                 "Failed to send message to "
+                f"{webhook['TEAM_KANAL']}. Error: {response.text}")
 
 
 if __name__ == "__main__":
@@ -47,7 +51,7 @@ if __name__ == "__main__":
                            )
     elif arguments == "delete":
         send_teams_message(webhook_dict,
-                           "Automatisches Löschen gemergerter Branches wurde durchgeführt"
+                           "Löschen gemergerter Branches wurde durchgeführt"
                            )
     else:
         send_teams_message(webhook_dict,
