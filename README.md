@@ -1,13 +1,18 @@
 # Sub-Module einbinden
 
-1. Navigiere zum Hauptverzeichnis deines Repositories in der Befehlszeile oder im Terminal.
-2. Führe den folgenden Befehl aus, um das Submodul hinzuzufügen:
-3. `git submodule add **Submodul-URL** **Pfad im Hauptrepository**`
-4. Ersetze `Submodul-URL` durch die URL des Submoduls, das du einbinden möchtest, und `Pfad im Hauptrepository` durch den Pfad, unter dem das Submodul in deinem Hauptrepository erscheinen soll.
-5. z.B. `git submodule add https://github.com/KevinThalmann222/WorkSpacePython.git Webhooks\Submodul` oder
-6. `git submodule add https://github.com/KevinThalmann222/WorkSpacePython.git`
-7. Führe den Befehl `git submodule init` aus, um das Submodul zu initialisieren.
-8. Führe den Befehl `git submodule update` aus, um das Submodul herunterzuladen und in deinem Hauptrepository zu speichern.
+01. Navigiere zum Hauptverzeichnis deines Repositories in der Befehlszeile oder im Terminal.
+02. Führe den folgenden Befehl aus, um das Submodul hinzuzufügen:
+03. `git submodule add **Submodul-URL** **Pfad im Hauptrepository**`
+04. Ersetze `Submodul-URL` durch die URL des Submoduls, das du einbinden möchtest, und `Pfad im Hauptrepository` durch den Pfad, unter dem das Submodul in deinem Hauptrepository erscheinen soll.
+05. z.B. `git submodule add https://github.com/KevinThalmann222/WorkSpacePython.git Webhooks\Submodul` oder
+06. `git submodule add https://github.com/KevinThalmann222/WorkSpacePython.git`
+07. Erstelle die Datei **.gitmodules** und füge folgenede Zeilen hinzu:
+08. a. `[submodule "WorkSpacePython"]`
+   b. `path = WorkSpacePython`
+   c. `url = https://github.com/KevinThalmann222/WorkSpacePython.git`
+09. Führe den Befehl `git submodule init` aus, um das Submodul zu initialisieren.
+10. Führe den Befehl `git submodule update` aus, um das Submodul herunterzuladen und in deinem Hauptrepository zu speichern.
+11. Git update submodule `git submodule update --remote <Name_submodule>` bzw. `git submodule update --remote WorkSpacePython`
 
 ## GitHub Actions: TeamsMessage-release
 

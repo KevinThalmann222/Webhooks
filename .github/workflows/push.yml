@@ -1,37 +1,33 @@
-# # Name des Workflows
+# Name des Workflows
 
-# name: TeamsMessage-push
+name: TeamsMessage-push
 
-# on:
-#   # Der Workflow wird ausgelöst, wenn etwas in "master" gepusht wird.
-#   push:
-#       branches:
-#         - master
-#   # Der Workflow kann manuell über den Workflow-Dispatch-Trigger ausgelöst werden
-#   workflow_dispatch:
+on:
+  # Der Workflow wird ausgelöst, wenn etwas in "master" gepusht wird.
+  push:
+      branches:
+        - master
+  # Der Workflow kann manuell über den Workflow-Dispatch-Trigger ausgelöst werden
+  workflow_dispatch:
 
-# jobs:
-#   build:
-#     # Der Workflow wird auf einem Ubuntu-Latest-Betriebssystem ausgeführt
-#     runs-on: ubuntu-latest
+jobs:
+  build:
+    # Der Workflow wird auf einem Ubuntu-Latest-Betriebssystem ausgeführt
+    runs-on: ubuntu-latest
 
-#     steps:
-#         # Aktuelles Repository auschecken.
-#         # "checkout" in Version 2
-#       - uses: actions/checkout@v2
-#         # Python-Umgebung einrichten
-#         # "setup-python" in Verison 2
-#       - uses: actions/setup-python@v2
-#         with:
-#           # Die gewünschte Python-Version angeben
-#           python-version: 3.x
-#       - name: Install requests module
-#         # Installieren von "requests"
-#         run: pip install requests
-#         # Schritt zum Ausführen des E-Mail-Codes
-#       - name: Sende Teams-Message
-#         # env:
-#           # Ein Geheimnis (secret) namens USER_PASSWORD wird als Umgebungsvariable festgelegt
-#           # USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-#         # Das Python-Skript "teams_webhook.py" wird ausgeführt
-#         run: python teams_webhook.py push
+    steps:
+        # Aktuelles Repository auschecken.
+        # "checkout" in Version 2
+      - uses: actions/checkout@v2
+        # Python-Umgebung einrichten
+        # "setup-python" in Verison 2
+      - uses: actions/setup-python@v2
+        with:
+          # Die gewünschte Python-Version angeben
+          python-version: 3.x
+      - name: Install requests module
+        # Installieren von "requests"
+        run: pip install requests
+        # Schritt zum Ausführen des E-Mail-Codes
+      # - name: Sende Teams-Message
+        # run: python teams_webhook.py push

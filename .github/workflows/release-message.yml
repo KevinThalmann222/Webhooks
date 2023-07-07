@@ -28,11 +28,10 @@ jobs:
         # Installieren von "requests"
         run: pip install requests
         # Schritt zum Ausführen des E-Mail-Codes
-      - name: Sende Teams-Message
-        # Das Python-Skript "teams_webhook.py" wird ausgeführt
-        run: python teams_webhook.py release "${{ github.event.release.name }}" "${{ github.event.release.body }}"
       - name: Echo
         id: release
         run: |
           echo "Release-Titel: ${{ github.event.release.name }}"
           echo "Release-Beschreibung: ${{ github.event.release.body }}"
+      # - name: Sende Teams-Message
+      #   run: python teams_webhook.py release "${{ github.event.release.name }}" "${{ github.event.release.body }}"
