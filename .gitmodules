@@ -1,3 +1,3 @@
 [submodule "WorkSpacePython"]
-path = WorkSpacePython
-url = https://github.com/KevinThalmann222/WorkSpacePython.git
+	path = WorkSpacePython
+	url = https://github.com/KevinThalmann222/WorkSpacePython.git
